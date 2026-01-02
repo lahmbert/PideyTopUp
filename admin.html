@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - PideyTopUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Dashboard Admin</span>
+            <button id="logout-btn" class="btn btn-outline-light">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#orders">Data Order</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#update-status">Update Status</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                </div>
+
+                <div id="dashboard-content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Orders</h5>
+                                    <p class="card-text" id="total-orders">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pending</h5>
+                                    <p class="card-text" id="pending-orders">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Completed</h5>
+                                    <p class="card-text" id="completed-orders">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="orders-content" style="display: none;">
+                    <h3>Data Order</h3>
+                    <input type="text" id="search-sn" class="form-control mb-3" placeholder="Cari berdasarkan SN">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Game</th>
+                                    <th>ID</th>
+                                    <th>Server</th>
+                                    <th>Nominal</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="update-content" style="display: none;">
+                    <h3>Update Status</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="update-sn" class="form-control mb-3" placeholder="Masukkan SN Order">
+                            <select id="update-status" class="form-select mb-3">
+                                <option value="Pending">Pending</option>
+                                <option value="Proses">Proses</option>
+                                <option value="Sukses">Sukses</option>
+                            </select>
+                            <button id="update-btn" class="btn btn-primary">Update Status</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
