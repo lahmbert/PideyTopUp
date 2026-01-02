@@ -8,98 +8,106 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">PideyTopUp</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#games">Games</a></li>
                     <li class="nav-item"><a class="nav-link" href="#topup">Top Up</a></li>
                     <li class="nav-item"><a class="nav-link" href="#cek-status">Cek Status</a></li>
                     <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                 </ul>
-                <button id="theme-toggle" class="btn btn-outline-light ms-3">Dark Mode</button>
+                <form class="d-flex search-bar">
+                    <input class="form-control me-2" type="search" id="game-search" placeholder="Cari Game..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="button" id="search-btn">Cari</button>
+                </form>
+                <button id="theme-toggle" class="btn btn-outline-light ms-3">Light Mode</button>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="hero bg-primary text-white text-center py-5">
-        <div class="container">
-            <h1 class="display-4">Top Up Game Termurah & Terpercaya</h1>
-            <p class="lead">Nikmati pengalaman top up game dengan harga terbaik dan layanan cepat. Aman, terpercaya, dan real-time!</p>
-            <a href="#topup" class="btn btn-light btn-lg">Top Up Sekarang</a>
+    <section id="home" class="hero">
+        <div class="container text-center">
+            <h1 class="display-4">Top Up Game Instant & Aman</h1>
+            <p class="lead">Nikmati pengalaman top up game dengan harga terbaik, pengiriman cepat, dan layanan terpercaya untuk semua game favorit Anda.</p>
+            <a href="#games" class="btn btn-primary btn-lg me-3">Lihat Games</a>
+            <a href="#topup" class="btn btn-outline-light btn-lg">Top Up Sekarang</a>
         </div>
     </section>
 
-    <section id="games" class="py-5">
+    <section id="games" class="section-bg">
         <div class="container">
-            <h2 class="text-center mb-4">Daftar Game Lengkap</h2>
+            <h2 class="text-center mb-4">Pilih Game Favorit Anda</h2>
             <div id="games-container" class="row">
                 <!-- Games will be loaded dynamically from API -->
             </div>
         </div>
     </section>
 
-    <section class="py-5 bg-light">
+    <section class="section-bg">
         <div class="container">
-            <h2 class="text-center mb-4">Kenapa Harus Kami?</h2>
+            <h2 class="text-center mb-4">Kenapa Pilih Kami?</h2>
             <div class="row">
                 <div class="col-md-4 text-center">
                     <i class="fas fa-rocket fa-3x text-primary mb-3"></i>
-                    <h5>Proses Cepat</h5>
-                    <p>Top up dalam hitungan menit setelah pembayaran.</p>
+                    <h5>Pengiriman Instant</h5>
+                    <p>Top up langsung masuk dalam hitungan menit.</p>
                 </div>
                 <div class="col-md-4 text-center">
                     <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
                     <h5>Aman & Terpercaya</h5>
-                    <p>Transaksi aman dengan sistem terenkripsi.</p>
+                    <p>Transaksi aman dengan enkripsi tinggi.</p>
                 </div>
                 <div class="col-md-4 text-center">
                     <i class="fas fa-headset fa-3x text-primary mb-3"></i>
-                    <h5>Support Admin</h5>
-                    <p>Admin siap membantu 24/7 via WhatsApp.</p>
+                    <h5>Support 24/7</h5>
+                    <p>Tim support siap membantu kapan saja.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5">
+    <section class="section-bg">
         <div class="container">
-            <h2 class="text-center mb-4">Cara Order</h2>
+            <h2 class="text-center mb-4">Cara Top Up</h2>
             <div class="row">
                 <div class="col-md-3 text-center">
                     <div class="step">1</div>
                     <h5>Pilih Game</h5>
+                    <p>Cari dan pilih game yang ingin di-top up.</p>
                 </div>
                 <div class="col-md-3 text-center">
                     <div class="step">2</div>
-                    <h5>Masukkan ID & Server</h5>
+                    <h5>Masukkan Detail</h5>
+                    <p>Masukkan ID player dan server jika diperlukan.</p>
                 </div>
                 <div class="col-md-3 text-center">
                     <div class="step">3</div>
                     <h5>Pilih Nominal</h5>
+                    <p>Tentukan jumlah kredit yang ingin dibeli.</p>
                 </div>
                 <div class="col-md-3 text-center">
                     <div class="step">4</div>
-                    <h5>Kirim ke WhatsApp</h5>
+                    <h5>Bayar & Selesai</h5>
+                    <p>Lakukan pembayaran dan tunggu konfirmasi.</p>
                 </div>
             </div>
-            <p class="text-center mt-3">Tunggu status dari admin untuk update real-time.</p>
         </div>
     </section>
 
-    <section class="py-5 bg-light">
+    <section class="section-bg">
         <div class="container">
-            <h2 class="text-center mb-4">Testimoni</h2>
+            <h2 class="text-center mb-4">Testimoni Pengguna</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <p>"Top up cepat dan aman. Recommended!"</p>
+                            <p>"Top up cepat dan harga murah. Recommended banget!"</p>
                             <footer class="blockquote-footer">Ahmad, Mobile Legends Player</footer>
                         </div>
                     </div>
@@ -107,7 +115,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <p>"Harga termurah, proses instan. Mantap!"</p>
+                            <p>"Proses instan, gak pernah gagal. Mantap!"</p>
                             <footer class="blockquote-footer">Siti, Free Fire Enthusiast</footer>
                         </div>
                     </div>
@@ -115,7 +123,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <p>"Admin responsif, tidak pernah gagal."</p>
+                            <p>"Admin responsif dan support bagus."</p>
                             <footer class="blockquote-footer">Budi, PUBG Mobile Gamer</footer>
                         </div>
                     </div>
@@ -124,7 +132,7 @@
         </div>
     </section>
 
-    <section id="cek-status" class="py-5">
+    <section id="cek-status" class="section-bg">
         <div class="container">
             <h2 class="text-center mb-4">Cek Status Order</h2>
             <div class="row justify-content-center">
@@ -137,54 +145,44 @@
         </div>
     </section>
 
-    <section id="topup" class="py-5 bg-light">
+    <section id="topup" class="section-bg">
         <div class="container">
             <h2 class="text-center mb-4">Top Up Game</h2>
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <form id="topup-form">
-                        <div class="mb-3">
-                            <label for="game-select" class="form-label">Pilih Game</label>
-                            <select id="game-select" class="form-select" required>
-                                <option value="">Pilih Game</option>
-                                <option value="Mobile Legends">Mobile Legends</option>
-                                <option value="Free Fire">Free Fire</option>
-                                <option value="PUBG Mobile">PUBG Mobile</option>
-                                <option value="Genshin Impact">Genshin Impact</option>
-                                <option value="Valorant">Valorant</option>
-                                <option value="Call of Duty Mobile">Call of Duty Mobile</option>
-                                <option value="Honkai Star Rail">Honkai Star Rail</option>
-                                <option value="Clash of Clans">Clash of Clans</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="user-id" class="form-label">User ID</label>
-                            <input type="text" id="user-id" class="form-control" required>
-                        </div>
-                        <div class="mb-3" id="server-group">
-                            <label for="server" class="form-label">Server</label>
-                            <input type="text" id="server" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nominal" class="form-label">Nominal Top Up</label>
-                            <select id="nominal" class="form-select" required>
-                                <option value="">Pilih Nominal</option>
-                                <option value="10 Diamonds">10 Diamonds - Rp 5,000</option>
-                                <option value="50 Diamonds">50 Diamonds - Rp 25,000</option>
-                                <option value="100 Diamonds">100 Diamonds - Rp 50,000</option>
-                                <option value="250 Diamonds">250 Diamonds - Rp 125,000</option>
-                                <option value="500 Diamonds">500 Diamonds - Rp 250,000</option>
-                                <option value="1000 Diamonds">1000 Diamonds - Rp 500,000</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-success w-100">Order via WhatsApp</button>
-                    </form>
+                    <div class="topup-form">
+                        <form id="topup-form">
+                            <div class="mb-3">
+                                <label for="game-select" class="form-label">Pilih Game</label>
+                                <select id="game-select" class="form-select" required>
+                                    <option value="">Pilih Game</option>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-id" class="form-label">ID Player</label>
+                                <input type="text" id="user-id" class="form-control" required>
+                            </div>
+                            <div class="mb-3" id="server-group">
+                                <label for="server" class="form-label">Server</label>
+                                <input type="text" id="server" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nominal" class="form-label">Pilih Nominal</label>
+                                <select id="nominal" class="form-select" required>
+                                    <option value="">Pilih Nominal</option>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Top Up Sekarang</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="faq" class="py-5">
+    <section id="faq" class="section-bg">
         <div class="container">
             <h2 class="text-center mb-4">FAQ</h2>
             <div class="accordion" id="faqAccordion">
@@ -196,7 +194,7 @@
                     </h2>
                     <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Ya, transaksi kami aman dengan sistem terenkripsi dan admin terpercaya.
+                            Ya, transaksi kami aman dengan sistem enkripsi dan admin terpercaya.
                         </div>
                     </div>
                 </div>
@@ -228,11 +226,35 @@
         </div>
     </section>
 
-    <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p>Kontak WhatsApp: <a href="https://wa.me/6285334679379" class="text-white">085334679379</a></p>
-            <p>Sosial Media: <a href="#" class="text-white">Instagram</a> | <a href="#" class="text-white">Facebook</a></p>
-            <p>&copy; 2026 PideyTopUp. All rights reserved.</p>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>PideyTopUp</h5>
+                    <p>Platform top up game terpercaya dengan pengiriman instant.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Link Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#topup">Top Up</a></li>
+                        <li><a href="#cek-status">Cek Status</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Kontak</h5>
+                    <p>WhatsApp: <a href="https://wa.me/6285334679379">085334679379</a></p>
+                    <p>Email: support@pideytopup.com</p>
+                    <div>
+                        <a href="#" class="me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">&copy; 2026 PideyTopUp. All rights reserved.</p>
         </div>
     </footer>
 

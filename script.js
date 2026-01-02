@@ -124,7 +124,7 @@ async function loadGames() {
     const gamesContainer = document.getElementById('games-container');
     if (gamesContainer) {
         gamesContainer.innerHTML = games.map(game => `
-            <div class="col-md-3 col-sm-6 mb-3">
+            <div class="col-md-3 col-sm-6 mb-3 game-item" data-game-name="${game.name.toLowerCase()}">
                 <div class="card game-card" data-game-id="${game.id}">
                     <img src="https://via.placeholder.com/150?text=${encodeURIComponent(game.name)}" class="card-img-top" alt="${game.name}">
                     <div class="card-body">
@@ -162,6 +162,27 @@ if (themeToggle) {
         document.body.classList.add('dark-mode');
         themeToggle.textContent = 'Light Mode';
     }
+}
+
+// Search functionality
+const searchBtn = document.getElementById('search-btn');
+const gameSearch = document.getElementById('game-search');
+if (searchBtn && gameSearch) {
+    const performSearch = () => {
+        const query = gameSearch.value.toLowerCase().trim();
+        const gameItems = document.querySelectorAll('.game-item');
+        gameItems.forEach(item => {
+            const gameName = item.getAttribute('data-game-name');
+            if (gameName.includes(query)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    };
+
+    searchBtn.addEventListener('click', performSearch);
+    gameSearch.addEventListener('input', performSearch);
 }
 
 // Top Up Form

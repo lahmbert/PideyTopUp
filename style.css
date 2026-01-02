@@ -1,29 +1,95 @@
 /* Custom Styles */
 body {
     font-family: 'Arial', sans-serif;
+    background-color: #1a1a2e;
+    color: #ffffff;
+}
+
+.navbar {
+    background-color: #000000 !important;
+    border-bottom: 2px solid #ff6b35;
+}
+
+.navbar-brand {
+    color: #ff6b35 !important;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #ffffff !important;
+}
+
+.nav-link:hover {
+    color: #ff6b35 !important;
 }
 
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 50vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 60vh;
     display: flex;
     align-items: center;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://via.placeholder.com/1920x600?text=Gaming+Banner') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-primary {
+    background-color: #ff6b35;
+    border-color: #ff6b35;
+}
+
+.btn-primary:hover {
+    background-color: #e55a2b;
+    border-color: #e55a2b;
 }
 
 .game-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #16213e;
+    border: 1px solid #333333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .game-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+    border-color: #ff6b35;
+}
+
+.game-card img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.game-card .card-body {
+    background-color: #16213e;
+    color: #ffffff;
 }
 
 .step {
     width: 50px;
     height: 50px;
-    background-color: #007bff;
+    background-color: #ff6b35;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -33,66 +99,119 @@ body {
     margin: 0 auto 10px;
 }
 
-.sidebar {
-    min-height: 100vh;
+.section-bg {
+    background-color: #0f0f23;
+    padding: 60px 0;
 }
 
-.nav-link {
-    color: #333;
-}
-
-.nav-link.active {
-    background-color: #007bff;
-    color: white;
-}
-
-/* Dark Mode */
-.dark-mode {
-    background-color: #121212;
+.card {
+    background-color: #16213e;
+    border: 1px solid #333333;
     color: #ffffff;
 }
 
-.dark-mode .navbar {
-    background-color: #333 !important;
-}
-
-.dark-mode .card {
-    background-color: #1e1e1e;
+.form-control {
+    background-color: #1a1a2e;
+    border: 1px solid #333333;
     color: #ffffff;
 }
 
-.dark-mode .bg-light {
-    background-color: #333 !important;
+.form-control:focus {
+    background-color: #1a1a2e;
+    border-color: #ff6b35;
+    color: #ffffff;
+    box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
 }
 
-.dark-mode .bg-primary {
-    background-color: #0056b3 !important;
-}
-
-.dark-mode .text-primary {
-    color: #4dabf7 !important;
-}
-
-.dark-mode .btn-outline-light {
+.btn-outline-light {
     color: #ffffff;
     border-color: #ffffff;
 }
 
-.dark-mode .btn-outline-light:hover {
+.btn-outline-light:hover {
     background-color: #ffffff;
-    color: #333;
+    color: #1a1a2e;
+}
+
+footer {
+    background-color: #000000;
+    color: #cccccc;
+    padding: 40px 0;
+}
+
+footer a {
+    color: #ff6b35;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+/* Dark Mode (already dark, but toggle if needed) */
+.dark-mode {
+    background-color: #0f0f23;
+    color: #ffffff;
+}
+
+.dark-mode .navbar {
+    background-color: #000000 !important;
+}
+
+.dark-mode .card {
+    background-color: #16213e;
+    color: #ffffff;
+}
+
+.dark-mode .bg-light {
+    background-color: #0f0f23 !important;
+}
+
+.dark-mode .bg-primary {
+    background-color: #1a1a2e !important;
+}
+
+.dark-mode .text-primary {
+    color: #ff6b35 !important;
 }
 
 .dark-mode footer {
-    background-color: #333 !important;
+    background-color: #000000 !important;
 }
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in {
     animation: fadeIn 0.5s ease-in;
+}
+
+/* Search Bar */
+.search-bar {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.search-bar .form-control {
+    border-radius: 25px 0 0 25px;
+}
+
+.search-bar .btn {
+    border-radius: 0 25px 25px 0;
+}
+
+/* Game Grid */
+#games-container .row {
+    justify-content: center;
+}
+
+/* Top-up Modal or Form Enhancements */
+.topup-form {
+    background-color: #16213e;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
