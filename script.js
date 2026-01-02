@@ -74,6 +74,7 @@ async function fetchGames() {
             body: JSON.stringify({
                 cmd: cmd,
                 username: username,
+                category: 'Games', // Filter for Games category directly from API
                 sign: sign
             })
         });
@@ -88,12 +89,19 @@ async function fetchGames() {
             throw new Error(`API Error: ${data.message || 'Unknown error'}`);
         }
 
-        // Filter for Games category
-        const gamesData = data.data.filter(item => item.category === 'Games');
+        // Filter for Games category and only active products
+        const gamesData = data.data.filter(item =>
+            item.category === 'Games' &&
+            item.seller_product_status === true &&
+            item.buyer_product_status === true
+        );
 
         if (gamesData.length === 0) {
-            throw new Error('No games data found in API response');
+            console.warn('No active games found in API response. Available data:', data.data.filter(item => item.category === 'Games').slice(0, 3));
+            throw new Error('No active games data found in API response');
         }
+
+        console.log(`Successfully fetched ${gamesData.length} game products from Digiflazz API`);
 
         // Group by brand and create denominations
         const gamesMap = {};
