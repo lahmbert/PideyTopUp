@@ -40,9 +40,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://via.placeholder.com/1920x600?text=Gaming+Banner') no-repeat center center;
+    background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1920&h=600&fit=crop') no-repeat center center;
     background-size: cover;
-    opacity: 0.3;
+    opacity: 0.4;
     z-index: 1;
 }
 
@@ -68,6 +68,7 @@ body {
     cursor: pointer;
     border-radius: 10px;
     overflow: hidden;
+    height: 100%;
 }
 
 .game-card:hover {
@@ -78,12 +79,21 @@ body {
 
 .game-card img {
     height: 150px;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #fff;
+    padding: 10px;
 }
 
 .game-card .card-body {
     background-color: #16213e;
     color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
 }
 
 .step {

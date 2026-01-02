@@ -123,12 +123,23 @@ async function loadGames() {
     const games = await fetchGames();
     const gamesContainer = document.getElementById('games-container');
     if (gamesContainer) {
+        const gameImages = {
+            'mobilelegends': 'https://logos-world.net/wp-content/uploads/2020/11/Mobile-Legends-Logo.png',
+            'freefire': 'https://logos-world.net/wp-content/uploads/2020/12/Free-Fire-Logo.png',
+            'pubgmobile': 'https://logos-world.net/wp-content/uploads/2020/12/PUBG-Mobile-Logo.png',
+            'genshinimpact': 'https://logos-world.net/wp-content/uploads/2021/02/Genshin-Impact-Logo.png',
+            'valorant': 'https://logos-world.net/wp-content/uploads/2021/02/Valorant-Logo.png',
+            'callofdutymobile': 'https://logos-world.net/wp-content/uploads/2020/11/Call-of-Duty-Mobile-Logo.png',
+            'honkaistarrail': 'https://logos-world.net/wp-content/uploads/2023/04/Honkai-Star-Rail-Logo.png',
+            'clashofclans': 'https://logos-world.net/wp-content/uploads/2020/11/Clash-of-Clans-Logo.png'
+        };
         gamesContainer.innerHTML = games.map(game => `
-            <div class="col-md-3 col-sm-6 mb-3 game-item" data-game-name="${game.name.toLowerCase()}">
-                <div class="card game-card" data-game-id="${game.id}">
-                    <img src="https://via.placeholder.com/150?text=${encodeURIComponent(game.name)}" class="card-img-top" alt="${game.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${game.name}</h5>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 game-item" data-game-name="${game.name.toLowerCase()}">
+                <div class="card game-card h-100" data-game-id="${game.id}">
+                    <img src="${gameImages[game.id] || 'https://via.placeholder.com/200x150?text=' + encodeURIComponent(game.name)}" class="card-img-top" alt="${game.name}" style="height: 150px; object-fit: contain; background-color: #fff; padding: 10px;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-center">${game.name}</h5>
+                        <button class="btn btn-primary mt-auto" onclick="selectGame('${game.id}')">Top Up</button>
                     </div>
                 </div>
             </div>
@@ -144,6 +155,16 @@ async function loadGames() {
 
     // Store games data for later use
     window.gamesData = games;
+}
+
+// Select game from card
+function selectGame(gameId) {
+    const gameSelect = document.getElementById('game-select');
+    if (gameSelect) {
+        gameSelect.value = gameId;
+        gameSelect.dispatchEvent(new Event('change'));
+    }
+    document.getElementById('topup').scrollIntoView({ behavior: 'smooth' });
 }
 
 // Dark Mode Toggle
