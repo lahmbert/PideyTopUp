@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Up Game Termurah & Terpercaya</title>
+    <title>PideyTopUp - Top Up Game Terpercaya</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -20,10 +22,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#games">Games</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#topup">Top Up</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#cek-status">Cek Status</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#topup">Topup</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cek-transaksi">Cek Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#leaderboard">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kalkulator">Kalkulator</a></li>
                 </ul>
                 <form class="d-flex search-bar">
                     <input class="form-control me-2" type="search" id="game-search" placeholder="Cari Game..." aria-label="Search">
@@ -34,110 +36,56 @@
         </div>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="container text-center">
-            <h1 class="display-3">Top Up Game Instant & Aman</h1>
-            <p class="lead mb-4">Nikmati pengalaman top up game dengan harga terbaik, pengiriman cepat, dan layanan terpercaya untuk semua game favorit Anda.</p>
-            <a href="#games" class="btn btn-primary btn-lg me-3">Lihat Games</a>
-            <a href="#topup" class="btn btn-outline-light btn-lg">Top Up Sekarang</a>
+    <section id="home" class="hero-slider">
+        <div class="slider">
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1920&h=600&fit=crop" alt="Promo 1">
+                <div class="slide-content">
+                    <h1>Top Up Game Murah & Cepat</h1>
+                    <p>Dapatkan diskon hingga 50% untuk game favorit Anda!</p>
+                    <a href="#topup" class="btn btn-primary btn-lg">Top Up Sekarang</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1920&h=600&fit=crop" alt="Promo 2">
+                <div class="slide-content">
+                    <h1>Promo Spesial Mobile Legends</h1>
+                    <p>Diamonds extra untuk setiap pembelian!</p>
+                    <a href="#topup" class="btn btn-primary btn-lg">Belanja Sekarang</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=1920&h=600&fit=crop" alt="Promo 3">
+                <div class="slide-content">
+                    <h1>Free Fire Diamonds Murah</h1>
+                    <p>Top up aman dan terpercaya.</p>
+                    <a href="#topup" class="btn btn-primary btn-lg">Top Up Free Fire</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="games" class="section-bg">
+    <section class="popular-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Populer Sekarang</h2>
+            <div class="row" id="popular-games">
+                <!-- Popular games will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="games" class="games-section py-5">
         <div class="container">
             <h2 class="text-center mb-4">Pilih Game Favorit Anda</h2>
-            <div id="games-container" class="row">
+            <div class="row" id="games-container">
                 <!-- Games will be loaded dynamically from API -->
             </div>
         </div>
     </section>
 
-    <section class="section-bg">
+    <section id="cek-transaksi" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Kenapa Pilih Kami?</h2>
-            <div class="row">
-                <div class="col-md-4 text-center">
-                    <i class="fas fa-rocket fa-3x text-primary mb-3"></i>
-                    <h5>Pengiriman Instant</h5>
-                    <p>Top up langsung masuk dalam hitungan menit.</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
-                    <h5>Aman & Terpercaya</h5>
-                    <p>Transaksi aman dengan enkripsi tinggi.</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <i class="fas fa-headset fa-3x text-primary mb-3"></i>
-                    <h5>Support 24/7</h5>
-                    <p>Tim support siap membantu kapan saja.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-bg">
-        <div class="container">
-            <h2 class="text-center mb-4">Cara Top Up</h2>
-            <div class="row">
-                <div class="col-md-3 text-center">
-                    <div class="step">1</div>
-                    <h5>Pilih Game</h5>
-                    <p>Cari dan pilih game yang ingin di-top up.</p>
-                </div>
-                <div class="col-md-3 text-center">
-                    <div class="step">2</div>
-                    <h5>Masukkan Detail</h5>
-                    <p>Masukkan ID player dan server jika diperlukan.</p>
-                </div>
-                <div class="col-md-3 text-center">
-                    <div class="step">3</div>
-                    <h5>Pilih Nominal</h5>
-                    <p>Tentukan jumlah kredit yang ingin dibeli.</p>
-                </div>
-                <div class="col-md-3 text-center">
-                    <div class="step">4</div>
-                    <h5>Bayar & Selesai</h5>
-                    <p>Lakukan pembayaran dan tunggu konfirmasi.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-bg">
-        <div class="container">
-            <h2 class="text-center mb-4">Testimoni Pengguna</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p>"Top up cepat dan harga murah. Recommended banget!"</p>
-                            <footer class="blockquote-footer">Ahmad, Mobile Legends Player</footer>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p>"Proses instan, gak pernah gagal. Mantap!"</p>
-                            <footer class="blockquote-footer">Siti, Free Fire Enthusiast</footer>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p>"Admin responsif dan support bagus."</p>
-                            <footer class="blockquote-footer">Budi, PUBG Mobile Gamer</footer>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="cek-status" class="section-bg">
-        <div class="container">
-            <h2 class="text-center mb-4">Cek Status Order</h2>
+            <h2 class="text-center mb-4">Cek Transaksi</h2>
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <input type="text" id="sn-input" class="form-control mb-3" placeholder="Masukkan SN Order (contoh: TOPUP-123456)">
@@ -148,7 +96,56 @@
         </div>
     </section>
 
-    <section id="topup" class="section-bg">
+    <section id="leaderboard" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Leaderboard Top Up</h2>
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>User</th>
+                            <th>Game</th>
+                            <th>Total Top Up</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-table">
+                        <tr><td>1</td><td>Player1</td><td>Mobile Legends</td><td>Rp 500,000</td></tr>
+                        <tr><td>2</td><td>Player2</td><td>Free Fire</td><td>Rp 450,000</td></tr>
+                        <tr><td>3</td><td>Player3</td><td>PUBG Mobile</td><td>Rp 400,000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="kalkulator" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Kalkulator Top Up</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="calc-game" class="form-label">Pilih Game</label>
+                                <select id="calc-game" class="form-select">
+                                    <option value="">Pilih Game</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="calc-amount" class="form-label">Jumlah</label>
+                                <input type="number" id="calc-amount" class="form-control" placeholder="Masukkan jumlah">
+                            </div>
+                            <button id="calc-btn" class="btn btn-primary w-100">Hitung</button>
+                            <div id="calc-result" class="mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="topup" class="py-5">
         <div class="container">
             <h2 class="text-center mb-4">Top Up Game</h2>
             <div class="row justify-content-center">
@@ -185,83 +182,57 @@
         </div>
     </section>
 
-    <section id="faq" class="section-bg">
-        <div class="container">
-            <h2 class="text-center mb-4">FAQ</h2>
-            <div class="accordion" id="faqAccordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                            Apakah aman?
-                        </button>
-                    </h2>
-                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Ya, transaksi kami aman dengan sistem enkripsi dan admin terpercaya.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                            Berapa lama proses?
-                        </button>
-                    </h2>
-                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Proses top up biasanya dalam 5-15 menit setelah konfirmasi pembayaran.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                            Bagaimana cek status?
-                        </button>
-                    </h2>
-                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Masukkan SN Order di bagian Cek Status di atas untuk melihat status terbaru.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h5>PideyTopUp</h5>
-                    <p>Platform top up game terpercaya dengan pengiriman instant.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Link Cepat</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#games">Games</a></li>
-                        <li><a href="#topup">Top Up</a></li>
-                        <li><a href="#cek-status">Cek Status</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Kontak</h5>
-                    <p>WhatsApp: <a href="https://wa.me/6285334679379">085334679379</a></p>
-                    <p>Email: support@pideytopup.com</p>
-                    <div>
+                    <p>Platform top up game terpercaya dengan pengiriman instant dan harga terbaik.</p>
+                    <div class="social-icons">
                         <a href="#" class="me-2"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5>Layanan</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#topup">Top Up Game</a></li>
+                        <li><a href="#cek-transaksi">Cek Transaksi</a></li>
+                        <li><a href="#leaderboard">Leaderboard</a></li>
+                        <li><a href="#kalkulator">Kalkulator</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Bantuan</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Cara Top Up</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Kontak Kami</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                    <div class="payment-methods mt-3">
+                        <img src="https://via.placeholder.com/150x50?text=Payment+Methods" alt="Payment Methods" class="img-fluid">
                     </div>
                 </div>
             </div>
             <hr>
-            <p class="text-center">&copy; 2026 PideyTopUp. All rights reserved.</p>
+            <p class="text-center">&copy; 2026 PideyTopUp. All rights reserved. | Powered by Digiflazz</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="script.js"></script>

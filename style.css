@@ -7,11 +7,11 @@ body {
 
 .navbar {
     background-color: #000000 !important;
-    border-bottom: 2px solid #ff6b35;
+    border-bottom: 2px solid #007bff;
 }
 
 .navbar-brand {
-    color: #ff6b35 !important;
+    color: #007bff !important;
     font-weight: bold;
 }
 
@@ -20,45 +20,76 @@ body {
 }
 
 .nav-link:hover {
-    color: #ff6b35 !important;
+    color: #007bff !important;
 }
 
-.hero {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    color: #ffffff;
+.hero-slider {
     position: relative;
     overflow: hidden;
+    height: 60vh;
 }
 
-.hero::before {
-    content: '';
+.slider {
+    height: 100%;
+}
+
+.slide {
+    position: relative;
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1920&h=600&fit=crop') no-repeat center center;
-    background-size: cover;
-    opacity: 0.4;
     z-index: 1;
 }
 
-.hero .container {
+.slide-content {
     position: relative;
     z-index: 2;
+    text-align: center;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+.slide-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
 }
 
 .btn-primary {
-    background-color: #ff6b35;
-    border-color: #ff6b35;
+    background-color: #007bff;
+    border-color: #007bff;
 }
 
 .btn-primary:hover {
-    background-color: #e55a2b;
-    border-color: #e55a2b;
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.popular-section {
+    background-color: #0f0f23;
+}
+
+.games-section {
+    background-color: #1a1a2e;
 }
 
 .game-card {
@@ -73,8 +104,8 @@ body {
 
 .game-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
-    border-color: #ff6b35;
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+    border-color: #007bff;
 }
 
 .game-card img {
@@ -96,19 +127,6 @@ body {
     margin-bottom: 15px;
 }
 
-.step {
-    width: 50px;
-    height: 50px;
-    background-color: #ff6b35;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    margin: 0 auto 10px;
-}
-
 .section-bg {
     background-color: #0f0f23;
     padding: 60px 0;
@@ -128,9 +146,9 @@ body {
 
 .form-control:focus {
     background-color: #1a1a2e;
-    border-color: #ff6b35;
+    border-color: #007bff;
     color: #ffffff;
-    box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .btn-outline-light {
@@ -143,19 +161,28 @@ body {
     color: #1a1a2e;
 }
 
-footer {
+.footer {
     background-color: #000000;
     color: #cccccc;
     padding: 40px 0;
 }
 
-footer a {
-    color: #ff6b35;
+.footer a {
+    color: #007bff;
     text-decoration: none;
 }
 
-footer a:hover {
+.footer a:hover {
     color: #ffffff;
+}
+
+.social-icons a {
+    color: #cccccc;
+    font-size: 1.5rem;
+}
+
+.social-icons a:hover {
+    color: #007bff;
 }
 
 /* Dark Mode (already dark, but toggle if needed) */
@@ -182,7 +209,7 @@ footer a:hover {
 }
 
 .dark-mode .text-primary {
-    color: #ff6b35 !important;
+    color: #007bff !important;
 }
 
 .dark-mode footer {
@@ -224,4 +251,41 @@ footer a:hover {
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Slick Slider Styles */
+.slick-slider {
+    height: 100%;
+}
+
+.slick-slide {
+    height: 60vh;
+}
+
+.slick-dots {
+    bottom: 20px;
+}
+
+.slick-dots li button:before {
+    color: #ffffff;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #007bff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slide-content h1 {
+        font-size: 2rem;
+    }
+    .slide-content p {
+        font-size: 1rem;
+    }
+    .hero-slider {
+        height: 50vh;
+    }
+    .slick-slide {
+        height: 50vh;
+    }
 }

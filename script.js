@@ -153,8 +153,42 @@ async function loadGames() {
             games.map(game => `<option value="${game.id}">${game.name}</option>`).join('');
     }
 
+    // Load popular games (first 4 games)
+    loadPopularGames(games.slice(0, 4));
+
+    // Update kalkulator game options
+    const calcGameSelect = document.getElementById('calc-game');
+    if (calcGameSelect) {
+        calcGameSelect.innerHTML = '<option value="">Pilih Game</option>' +
+            games.map(game => `<option value="${game.id}">${game.name}</option>`).join('');
+    }
+
     // Store games data for later use
     window.gamesData = games;
+}
+
+// Load popular games section
+function loadPopularGames(popularGames) {
+    const popularContainer = document.getElementById('popular-games');
+    if (popularContainer) {
+        const gameImages = {
+            'mobilelegends': 'https://logos-world.net/wp-content/uploads/2020/11/Mobile-Legends-Logo.png',
+            'freefire': 'https://logos-world.net/wp-content/uploads/2020/12/Free-Fire-Logo.png',
+            'pubgmobile': 'https://logos-world.net/wp-content/uploads/2020/12/PUBG-Mobile-Logo.png',
+            'genshinimpact': 'https://logos-world.net/wp-content/uploads/2021/02/Genshin-Impact-Logo.png'
+        };
+        popularContainer.innerHTML = popularGames.map(game => `
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card game-card h-100" data-game-id="${game.id}">
+                    <img src="${gameImages[game.id] || 'https://via.placeholder.com/200x150?text=' + encodeURIComponent(game.name)}" class="card-img-top" alt="${game.name}" style="height: 150px; object-fit: contain; background-color: #fff; padding: 10px;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-center">${game.name}</h5>
+                        <button class="btn btn-primary mt-auto" onclick="selectGame('${game.id}')">Top Up</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
 }
 
 // Select game from card
@@ -165,6 +199,20 @@ function selectGame(gameId) {
         gameSelect.dispatchEvent(new Event('change'));
     }
     document.getElementById('topup').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Initialize hero slider
+function initHeroSlider() {
+    $('.slider').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        autoplay: true,
+        autoplaySpeed: 5000,
+        arrows: false
+    });
 }
 
 // Dark Mode Toggle
@@ -294,6 +342,34 @@ if (cekBtn) {
     });
 }
 
+// Kalkulator
+const calcBtn = document.getElementById('calc-btn');
+if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+        const gameId = document.getElementById('calc-game').value;
+        const amount = document.getElementById('calc-amount').value;
+
+        if (!gameId || !amount) {
+            document.getElementById('calc-result').innerHTML = '<div class="alert alert-warning">Harap pilih game dan masukkan jumlah.</div>';
+            return;
+        }
+
+        const selectedGame = window.gamesData.find(g => g.id === gameId);
+        if (selectedGame) {
+            const denomination = selectedGame.denominations.find(d => d.name.includes(amount) || d.name.startsWith(amount));
+            if (denomination) {
+                document.getElementById('calc-result').innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>Harga:</strong> Rp ${denomination.price.toLocaleString()}
+                    </div>
+                `;
+            } else {
+                document.getElementById('calc-result').innerHTML = '<div class="alert alert-danger">Nominal tidak ditemukan untuk game ini.</div>';
+            }
+        }
+    });
+}
+
 // Login
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
@@ -399,5 +475,8 @@ if (window.location.pathname.includes('admin.html')) {
     loadOrdersTable();
 }
 
-// Initialize games on page load
-document.addEventListener('DOMContentLoaded', loadGames);
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadGames();
+    initHeroSlider();
+});
