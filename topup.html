@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up Game - PideyTopUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="https://via.placeholder.com/40x40?text=P" alt="Logo" class="me-2 rounded-circle">
+                PideyTopUp
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="topup.html">Topup</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cek-transaksi.html">Cek Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kalkulator.html">Kalkulator</a></li>
+                </ul>
+                <div class="d-flex flex-column flex-lg-row align-items-center mt-3 mt-lg-0">
+                    <form class="d-flex search-bar me-lg-3 mb-2 mb-lg-0">
+                        <input class="form-control me-2" type="search" id="game-search" placeholder="Cari Game..." aria-label="Search">
+                        <button class="btn btn-outline-light" type="button" id="search-btn">Cari</button>
+                    </form>
+                    <button id="theme-toggle" class="btn btn-outline-light">Light Mode</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Top Up Game Instant</h1>
+                    <p class="lead mb-4">Pengiriman cepat, harga terbaik, dan layanan terpercaya untuk semua game favorit Anda.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="feature-item">
+                            <i class="fas fa-rocket text-primary me-2"></i>
+                            <span>Pengiriman Instant</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt text-primary me-2"></i>
+                            <span>Aman & Terpercaya</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-headset text-primary me-2"></i>
+                            <span>Support 24/7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&h=400&fit=crop" alt="Gaming" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="games-preview py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Game Populer</h2>
+            <div class="row" id="games-container">
+                <!-- Games will be loaded dynamically from API -->
+            </div>
+            <div class="text-center mt-4">
+                <a href="index.html#games" class="btn btn-primary btn-lg">Lihat Semua Game</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="topup" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Top Up Game</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="topup-form">
+                        <form id="topup-form">
+                            <div class="mb-3">
+                                <label for="game-select" class="form-label">Pilih Game</label>
+                                <select id="game-select" class="form-select" required>
+                                    <option value="">Pilih Game</option>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-id" class="form-label">ID Player</label>
+                                <input type="text" id="user-id" class="form-control" required>
+                            </div>
+                            <div class="mb-3" id="server-group">
+                                <label for="server" class="form-label">Server</label>
+                                <input type="text" id="server" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nominal" class="form-label">Pilih Nominal</label>
+                                <select id="nominal" class="form-select" required>
+                                    <option value="">Pilih Nominal</option>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Top Up Sekarang</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>PideyTopUp</h5>
+                    <p>Platform top up game terpercaya dengan pengiriman instant dan harga terbaik.</p>
+                    <div class="social-icons">
+                        <a href="#" class="me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5>Layanan</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="topup.html">Top Up Game</a></li>
+                        <li><a href="cek-transaksi.html">Cek Transaksi</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="kalkulator.html">Kalkulator</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Bantuan</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Cara Top Up</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Kontak Kami</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                    <div class="payment-methods mt-3">
+                        <img src="https://via.placeholder.com/150x50?text=Payment+Methods" alt="Payment Methods" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">&copy; 2026 PideyTopUp. All rights reserved. | Powered by Digiflazz</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -38,21 +38,35 @@ async function fetchGames() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                cmd,
-                username,
-                sign
+                cmd: cmd,
+                username: username,
+                sign: sign
             })
         });
-        if (!response.ok) throw new Error('API request failed');
+
+        if (!response.ok) {
+            throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+        }
+
         const data = await response.json();
+
+        if (data.rc !== '00') {
+            throw new Error(`API Error: ${data.message || 'Unknown error'}`);
+        }
+
         // Filter for Games category
         const gamesData = data.data.filter(item => item.category === 'Games');
+
+        if (gamesData.length === 0) {
+            throw new Error('No games data found in API response');
+        }
+
         // Group by brand and create denominations
         const gamesMap = {};
         gamesData.forEach(item => {
             if (!gamesMap[item.brand]) {
                 gamesMap[item.brand] = {
-                    id: item.brand.toLowerCase().replace(/\s+/g, ''),
+                    id: item.brand.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, ''),
                     name: item.brand,
                     type: 'game',
                     denominations: []
@@ -61,58 +75,75 @@ async function fetchGames() {
             gamesMap[item.brand].denominations.push({
                 id: item.buyer_sku_code,
                 name: item.product_name.replace(item.brand + ' ', ''),
-                price: parseInt(item.price)
+                price: parseInt(item.price),
+                buyer_price: parseInt(item.price),
+                seller_price: parseInt(item.price) + 1000 // Add markup for seller
             });
         });
-        return Object.values(gamesMap);
+
+        const games = Object.values(gamesMap);
+        console.log(`Successfully loaded ${games.length} games with ${gamesData.length} products from Digiflazz API`);
+        return games;
+
     } catch (error) {
         console.error('Failed to fetch from Digiflazz API:', error);
-        // Fallback to dummy data based on Digiflazz structure
+        console.log('Falling back to dummy data...');
+
+        // Enhanced fallback data with more games and realistic prices
         return [
             { id: 'mobilelegends', name: 'Mobile Legends', type: 'game', denominations: [
-                { id: 'ML100', name: '100 Diamonds', price: 15000 },
-                { id: 'ML250', name: '250 Diamonds', price: 37500 },
-                { id: 'ML500', name: '500 Diamonds', price: 75000 },
-                { id: 'ML1000', name: '1000 Diamonds', price: 150000 }
+                { id: 'ML100', name: '100 Diamonds', price: 15000, buyer_price: 15000, seller_price: 16000 },
+                { id: 'ML250', name: '250 Diamonds', price: 37500, buyer_price: 37500, seller_price: 38500 },
+                { id: 'ML500', name: '500 Diamonds', price: 75000, buyer_price: 75000, seller_price: 76000 },
+                { id: 'ML1000', name: '1000 Diamonds', price: 150000, buyer_price: 150000, seller_price: 151000 }
             ]},
             { id: 'freefire', name: 'Free Fire', type: 'game', denominations: [
-                { id: 'FF120', name: '120 Diamonds', price: 20000 },
-                { id: 'FF310', name: '310 Diamonds', price: 50000 },
-                { id: 'FF520', name: '520 Diamonds', price: 85000 },
-                { id: 'FF1080', name: '1080 Diamonds', price: 170000 }
+                { id: 'FF120', name: '120 Diamonds', price: 20000, buyer_price: 20000, seller_price: 21000 },
+                { id: 'FF310', name: '310 Diamonds', price: 50000, buyer_price: 50000, seller_price: 51000 },
+                { id: 'FF520', name: '520 Diamonds', price: 85000, buyer_price: 85000, seller_price: 86000 },
+                { id: 'FF1080', name: '1080 Diamonds', price: 170000, buyer_price: 170000, seller_price: 171000 }
             ]},
             { id: 'pubgmobile', name: 'PUBG Mobile', type: 'game', denominations: [
-                { id: 'PUBG60', name: '60 UC', price: 15000 },
-                { id: 'PUBG325', name: '325 UC', price: 75000 },
-                { id: 'PUBG660', name: '660 UC', price: 150000 },
-                { id: 'PUBG1800', name: '1800 UC', price: 375000 }
+                { id: 'PUBG60', name: '60 UC', price: 15000, buyer_price: 15000, seller_price: 16000 },
+                { id: 'PUBG325', name: '325 UC', price: 75000, buyer_price: 75000, seller_price: 76000 },
+                { id: 'PUBG660', name: '660 UC', price: 150000, buyer_price: 150000, seller_price: 151000 },
+                { id: 'PUBG1800', name: '1800 UC', price: 375000, buyer_price: 375000, seller_price: 376000 }
             ]},
             { id: 'genshinimpact', name: 'Genshin Impact', type: 'game', denominations: [
-                { id: 'GI60', name: '60 Genesis Crystals', price: 15000 },
-                { id: 'GI300', name: '300 Genesis Crystals', price: 75000 },
-                { id: 'GI980', name: '980 Genesis Crystals', price: 225000 },
-                { id: 'GI1980', name: '1980 Genesis Crystals', price: 450000 }
+                { id: 'GI60', name: '60 Genesis Crystals', price: 15000, buyer_price: 15000, seller_price: 16000 },
+                { id: 'GI300', name: '300 Genesis Crystals', price: 75000, buyer_price: 75000, seller_price: 76000 },
+                { id: 'GI980', name: '980 Genesis Crystals', price: 225000, buyer_price: 225000, seller_price: 226000 },
+                { id: 'GI1980', name: '1980 Genesis Crystals', price: 450000, buyer_price: 450000, seller_price: 451000 }
             ]},
             { id: 'valorant', name: 'Valorant', type: 'game', denominations: [
-                { id: 'VAL125', name: '125 Points', price: 15000 },
-                { id: 'VAL420', name: '420 Points', price: 50000 },
-                { id: 'VAL700', name: '700 Points', price: 85000 },
-                { id: 'VAL1375', name: '1375 Points', price: 170000 }
+                { id: 'VAL125', name: '125 Points', price: 15000, buyer_price: 15000, seller_price: 16000 },
+                { id: 'VAL420', name: '420 Points', price: 50000, buyer_price: 50000, seller_price: 51000 },
+                { id: 'VAL700', name: '700 Points', price: 85000, buyer_price: 85000, seller_price: 86000 },
+                { id: 'VAL1375', name: '1375 Points', price: 170000, buyer_price: 170000, seller_price: 171000 }
             ]},
-            { id: 'callofdutymobile', name: 'Call of Duty Mobile', type: 'game', denominations: [
-                { id: 'COD80', name: '80 CP', price: 15000 },
-                { id: 'COD400', name: '400 CP', price: 75000 },
-                { id: 'COD1000', name: '1000 CP', price: 180000 }
+            { id: 'codmobile', name: 'Call of Duty Mobile', type: 'game', denominations: [
+                { id: 'COD80', name: '80 CP', price: 15000, buyer_price: 15000, seller_price: 16000 },
+                { id: 'COD400', name: '400 CP', price: 75000, buyer_price: 75000, seller_price: 76000 },
+                { id: 'COD1000', name: '1000 CP', price: 170000, buyer_price: 170000, seller_price: 171000 },
+                { id: 'COD2400', name: '2400 CP', price: 375000, buyer_price: 375000, seller_price: 376000 }
             ]},
-            { id: 'honkaistarrail', name: 'Honkai Star Rail', type: 'game', denominations: [
-                { id: 'HSR60', name: '60 Stellar Jade', price: 15000 },
-                { id: 'HSR300', name: '300 Stellar Jade', price: 75000 },
-                { id: 'HSR980', name: '980 Stellar Jade', price: 225000 }
+            { id: 'arenaofvalor', name: 'Arena of Valor', type: 'game', denominations: [
+                { id: 'AOV100', name: '100 Vouchers', price: 15000, buyer_price: 15000, seller_price: 16000 },
+                { id: 'AOV520', name: '520 Vouchers', price: 75000, buyer_price: 75000, seller_price: 76000 },
+                { id: 'AOV1060', name: '1060 Vouchers', price: 150000, buyer_price: 150000, seller_price: 151000 },
+                { id: 'AOV2180', name: '2180 Vouchers', price: 300000, buyer_price: 300000, seller_price: 301000 }
             ]},
-            { id: 'clashofclans', name: 'Clash of Clans', type: 'game', denominations: [
-                { id: 'COC80', name: '80 Gems', price: 25000 },
-                { id: 'COC500', name: '500 Gems', price: 125000 },
-                { id: 'COC1200', name: '1200 Gems', price: 250000 }
+            { id: 'honkaiimpact3', name: 'Honkai Impact 3', type: 'game', denominations: [
+                { id: 'HI330', name: '330 Crystals', price: 15000, buyer_price: 15000, seller_price: 16000 },
+                { id: 'HI980', name: '980 Crystals', price: 45000, buyer_price: 45000, seller_price: 46000 },
+                { id: 'HI1980', name: '1980 Crystals', price: 90000, buyer_price: 90000, seller_price: 91000 },
+                { id: 'HI3280', name: '3280 Crystals', price: 150000, buyer_price: 150000, seller_price: 151000 }
+            ]},
+            { id: 'lordsmobile', name: 'Lords Mobile', type: 'game', denominations: [
+                { id: 'LM120', name: '120 Gems', price: 15000, buyer_price: 15000, seller_price: 16000 },
+                { id: 'LM610', name: '610 Gems', price: 75000, buyer_price: 75000, seller_price: 76000 },
+                { id: 'LM1280', name: '1280 Gems', price: 150000, buyer_price: 150000, seller_price: 151000 },
+                { id: 'LM2680', name: '2680 Gems', price: 300000, buyer_price: 300000, seller_price: 301000 }
             ]}
         ];
     }
@@ -287,7 +318,10 @@ if (topupForm) {
 
             // Update nominal options
             nominalSelect.innerHTML = '<option value="">Pilih Nominal</option>' +
-                selectedGame.denominations.map(denom => `<option value="${denom.name} - Rp ${denom.price.toLocaleString()}">${denom.name} - Rp ${denom.price.toLocaleString()}</option>`).join('');
+                selectedGame.denominations.map(denom => {
+                    const displayPrice = denom.seller_price || denom.price;
+                    return `<option value="${denom.name} - Rp ${displayPrice.toLocaleString()}">${denom.name} - Rp ${displayPrice.toLocaleString()}</option>`;
+                }).join('');
         }
     });
 
@@ -360,7 +394,7 @@ const calcBtn = document.getElementById('calc-btn');
 if (calcBtn) {
     calcBtn.addEventListener('click', () => {
         const gameId = document.getElementById('calc-game').value;
-        const amount = document.getElementById('calc-amount').value;
+        const amount = parseInt(document.getElementById('calc-amount').value);
 
         if (!gameId || !amount) {
             document.getElementById('calc-result').innerHTML = '<div class="alert alert-warning">Harap pilih game dan masukkan jumlah.</div>';
@@ -369,16 +403,34 @@ if (calcBtn) {
 
         const selectedGame = window.gamesData.find(g => g.id === gameId);
         if (selectedGame) {
-            const denomination = selectedGame.denominations.find(d => d.name.includes(amount) || d.name.startsWith(amount));
+            // Find the closest denomination based on the amount
+            const denomination = selectedGame.denominations.find(d => {
+                const denomAmount = parseInt(d.name.split(' ')[0]);
+                return denomAmount === amount;
+            });
+
             if (denomination) {
+                const sellerPrice = denomination.seller_price || denomination.price;
                 document.getElementById('calc-result').innerHTML = `
                     <div class="alert alert-success">
-                        <strong>Harga:</strong> Rp ${denomination.price.toLocaleString()}
+                        <strong>${denomination.name}</strong><br>
+                        <strong>Harga:</strong> Rp ${sellerPrice.toLocaleString()}<br>
+                        <small class="text-muted">Harga sudah termasuk biaya admin</small>
                     </div>
                 `;
             } else {
-                document.getElementById('calc-result').innerHTML = '<div class="alert alert-danger">Nominal tidak ditemukan untuk game ini.</div>';
+                // Show available denominations for this game
+                const availableOptions = selectedGame.denominations.map(d => d.name).join(', ');
+                document.getElementById('calc-result').innerHTML = `
+                    <div class="alert alert-info">
+                        <strong>Nominal tersedia untuk ${selectedGame.name}:</strong><br>
+                        ${availableOptions}<br>
+                        <small class="text-muted">Pilih dari nominal yang tersedia</small>
+                    </div>
+                `;
             }
+        } else {
+            document.getElementById('calc-result').innerHTML = '<div class="alert alert-danger">Game tidak ditemukan.</div>';
         }
     });
 }

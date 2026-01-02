@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - PideyTopUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="https://via.placeholder.com/40x40?text=P" alt="Logo" class="me-2 rounded-circle">
+                PideyTopUp
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="topup.html">Topup</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cek-transaksi.html">Cek Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="leaderboard.html">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kalkulator.html">Kalkulator</a></li>
+                </ul>
+                <div class="d-flex flex-column flex-lg-row align-items-center mt-3 mt-lg-0">
+                    <form class="d-flex search-bar me-lg-3 mb-2 mb-lg-0">
+                        <input class="form-control me-2" type="search" id="game-search" placeholder="Cari Game..." aria-label="Search">
+                        <button class="btn btn-outline-light" type="button" id="search-btn">Cari</button>
+                    </form>
+                    <button id="theme-toggle" class="btn btn-outline-light">Light Mode</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">🏆 Leaderboard Top Up</h1>
+                    <p class="lead mb-4">Lihat pemain teraktif dan top spender di platform kami. Bersainglah untuk meraih posisi teratas!</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="feature-item">
+                            <i class="fas fa-trophy text-warning me-2"></i>
+                            <span>Top Spender</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-users text-primary me-2"></i>
+                            <span>Pemain Aktif</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-star text-success me-2"></i>
+                            <span>Update Real-time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=500&h=400&fit=crop" alt="Leaderboard" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="leaderboard" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h2 class="mb-0 text-center">🏆 Top 10 Pemain</h2>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th class="text-center">Rank</th>
+                                            <th>Pemain</th>
+                                            <th>Game</th>
+                                            <th class="text-end">Total Top Up</th>
+                                            <th class="text-center">Level</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="leaderboard-table">
+                                        <tr class="table-warning">
+                                            <td class="text-center">
+                                                <span class="badge bg-warning text-dark">🥇</span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=1" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>ProGamer2026</strong>
+                                                        <br><small class="text-muted">@progamer</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Mobile Legends</td>
+                                            <td class="text-end"><strong>Rp 2,500,000</strong></td>
+                                            <td class="text-center"><span class="badge bg-success">VIP</span></td>
+                                        </tr>
+                                        <tr class="table-secondary">
+                                            <td class="text-center">
+                                                <span class="badge bg-secondary">🥈</span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=2" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>FreeFireKing</strong>
+                                                        <br><small class="text-muted">@ffking</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Free Fire</td>
+                                            <td class="text-end"><strong>Rp 2,200,000</strong></td>
+                                            <td class="text-center"><span class="badge bg-info">Gold</span></td>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <td class="text-center">
+                                                <span class="badge bg-info">🥉</span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=3" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>PUBGMaster</strong>
+                                                        <br><small class="text-muted">@pubgmaster</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>PUBG Mobile</td>
+                                            <td class="text-end"><strong>Rp 1,800,000</strong></td>
+                                            <td class="text-center"><span class="badge bg-info">Gold</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">4</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=4" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>GenshinFan</strong>
+                                                        <br><small class="text-muted">@genshinfan</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Genshin Impact</td>
+                                            <td class="text-end">Rp 1,500,000</td>
+                                            <td class="text-center"><span class="badge bg-primary">Silver</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">5</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=5" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>ValorantPro</strong>
+                                                        <br><small class="text-muted">@valorantpro</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Valorant</td>
+                                            <td class="text-end">Rp 1,200,000</td>
+                                            <td class="text-center"><span class="badge bg-primary">Silver</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">6</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=6" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>CODMaster</strong>
+                                                        <br><small class="text-muted">@codmaster</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Call of Duty Mobile</td>
+                                            <td class="text-end">Rp 950,000</td>
+                                            <td class="text-center"><span class="badge bg-secondary">Bronze</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">7</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=7" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>HonkaiPlayer</strong>
+                                                        <br><small class="text-muted">@honkaiplayer</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Honkai Star Rail</td>
+                                            <td class="text-end">Rp 750,000</td>
+                                            <td class="text-center"><span class="badge bg-secondary">Bronze</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">8</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=8" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>ClashRoyale</strong>
+                                                        <br><small class="text-muted">@clashroyale</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Clash of Clans</td>
+                                            <td class="text-end">Rp 600,000</td>
+                                            <td class="text-center"><span class="badge bg-secondary">Bronze</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">9</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=9" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>GameLover</strong>
+                                                        <br><small class="text-muted">@gamelover</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Mobile Legends</td>
+                                            <td class="text-end">Rp 450,000</td>
+                                            <td class="text-center"><span class="badge bg-light text-dark">New</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">10</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40x40?text=10" alt="Avatar" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                                    <div>
+                                                        <strong>TopUpAddict</strong>
+                                                        <br><small class="text-muted">@topupaddict</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Free Fire</td>
+                                            <td class="text-end">Rp 350,000</td>
+                                            <td class="text-center"><span class="badge bg-light text-dark">New</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">🏅 Pencapaian Bulan Ini</h2>
+            <div class="row">
+                <div class="col-md-3 text-center mb-4">
+                    <div class="achievement-card p-4 bg-white rounded shadow">
+                        <i class="fas fa-crown fa-3x text-warning mb-3"></i>
+                        <h4>Top Spender</h4>
+                        <p>ProGamer2026</p>
+                        <span class="badge bg-warning">Rp 2.5M+</span>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center mb-4">
+                    <div class="achievement-card p-4 bg-white rounded shadow">
+                        <i class="fas fa-fire fa-3x text-danger mb-3"></i>
+                        <h4>Most Active</h4>
+                        <p>FreeFireKing</p>
+                        <span class="badge bg-danger">50+ Top Up</span>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center mb-4">
+                    <div class="achievement-card p-4 bg-white rounded shadow">
+                        <i class="fas fa-star fa-3x text-success mb-3"></i>
+                        <h4>Rising Star</h4>
+                        <p>PUBGMaster</p>
+                        <span class="badge bg-success">Fast Growth</span>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center mb-4">
+                    <div class="achievement-card p-4 bg-white rounded shadow">
+                        <i class="fas fa-heart fa-3x text-primary mb-3"></i>
+                        <h4>Loyal Player</h4>
+                        <p>GenshinFan</p>
+                        <span class="badge bg-primary">6 Months</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>PideyTopUp</h5>
+                    <p>Platform top up game terpercaya dengan pengiriman instant dan harga terbaik.</p>
+                    <div class="social-icons">
+                        <a href="#" class="me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5>Layanan</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="topup.html">Top Up Game</a></li>
+                        <li><a href="cek-transaksi.html">Cek Transaksi</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="kalkulator.html">Kalkulator</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Bantuan</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Cara Top Up</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Kontak Kami</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                    <div class="payment-methods mt-3">
+                        <img src="https://via.placeholder.com/150x50?text=Payment+Methods" alt="Payment Methods" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">&copy; 2026 PideyTopUp. All rights reserved. | Powered by Digiflazz</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

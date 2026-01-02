@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="https://via.placeholder.com/40x40?text=P" alt="Logo" class="me-2 rounded-circle">
                 PideyTopUp
             </a>
@@ -21,11 +21,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#topup">Topup</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#cek-transaksi">Cek Transaksi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#leaderboard">Leaderboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#kalkulator">Kalkulator</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="topup.html">Topup</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cek-transaksi.html">Cek Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kalkulator.html">Kalkulator</a></li>
                 </ul>
                 <div class="d-flex flex-column flex-lg-row align-items-center mt-3 mt-lg-0">
                     <form class="d-flex search-bar me-lg-3 mb-2 mb-lg-0">
@@ -46,7 +46,7 @@
                     <div class="slide-content">
                         <h1>Top Up Game Murah & Cepat</h1>
                         <p>Dapatkan diskon hingga 50% untuk game favorit Anda!</p>
-                        <a href="#topup" class="btn btn-primary btn-lg">Top Up Sekarang</a>
+                        <a href="topup.html" class="btn btn-primary btn-lg">Top Up Sekarang</a>
                     </div>
                 </div>
                 <div class="slide">
@@ -54,7 +54,7 @@
                     <div class="slide-content">
                         <h1>Promo Spesial Mobile Legends</h1>
                         <p>Diamonds extra untuk setiap pembelian!</p>
-                        <a href="#topup" class="btn btn-primary btn-lg">Belanja Sekarang</a>
+                        <a href="topup.html" class="btn btn-primary btn-lg">Belanja Sekarang</a>
                     </div>
                 </div>
                 <div class="slide">
@@ -62,18 +62,56 @@
                     <div class="slide-content">
                         <h1>Free Fire Diamonds Murah</h1>
                         <p>Top up aman dan terpercaya.</p>
-                        <a href="#topup" class="btn btn-primary btn-lg">Top Up Free Fire</a>
+                        <a href="topup.html" class="btn btn-primary btn-lg">Top Up Free Fire</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="popular-section py-5">
+    <section class="features-section py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Populer Sekarang</h2>
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="feature-card p-4">
+                        <i class="fas fa-rocket fa-3x text-primary mb-3"></i>
+                        <h4>Pengiriman Instant</h4>
+                        <p>Top up langsung masuk dalam hitungan menit</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-card p-4">
+                        <i class="fas fa-shield-alt fa-3x text-success mb-3"></i>
+                        <h4>Aman & Terpercaya</h4>
+                        <p>Transaksi aman dengan sistem enkripsi tinggi</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-card p-4">
+                        <i class="fas fa-headset fa-3x text-info mb-3"></i>
+                        <h4>Support 24/7</h4>
+                        <p>Tim support siap membantu kapan saja</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-card p-4">
+                        <i class="fas fa-tags fa-3x text-warning mb-3"></i>
+                        <h4>Harga Terbaik</h4>
+                        <p>Diskon menarik untuk semua game populer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="popular-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">🎮 Game Populer</h2>
             <div class="row" id="popular-games">
                 <!-- Popular games will be loaded here -->
+            </div>
+            <div class="text-center mt-4">
+                <a href="#games" class="btn btn-primary btn-lg">Lihat Semua Game</a>
             </div>
         </div>
     </section>
@@ -87,101 +125,51 @@
         </div>
     </section>
 
-    <section id="cek-transaksi" class="py-5">
+    <section class="stats-section py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Cek Transaksi</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <input type="text" id="sn-input" class="form-control mb-3" placeholder="Masukkan SN Order (contoh: TOPUP-123456)">
-                    <button id="cek-btn" class="btn btn-primary w-100">Cek Status</button>
-                    <div id="status-result" class="mt-3"></div>
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card p-4 bg-primary text-white rounded">
+                        <h2 class="mb-2">10,000+</h2>
+                        <p class="mb-0">Transaksi Sukses</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="leaderboard" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Leaderboard Top Up</h2>
-            <div class="table-responsive">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>User</th>
-                            <th>Game</th>
-                            <th>Total Top Up</th>
-                        </tr>
-                    </thead>
-                    <tbody id="leaderboard-table">
-                        <tr><td>1</td><td>Player1</td><td>Mobile Legends</td><td>Rp 500,000</td></tr>
-                        <tr><td>2</td><td>Player2</td><td>Free Fire</td><td>Rp 450,000</td></tr>
-                        <tr><td>3</td><td>Player3</td><td>PUBG Mobile</td><td>Rp 400,000</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <section id="kalkulator" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Kalkulator Top Up</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="calc-game" class="form-label">Pilih Game</label>
-                                <select id="calc-game" class="form-select">
-                                    <option value="">Pilih Game</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="calc-amount" class="form-label">Jumlah</label>
-                                <input type="number" id="calc-amount" class="form-control" placeholder="Masukkan jumlah">
-                            </div>
-                            <button id="calc-btn" class="btn btn-primary w-100">Hitung</button>
-                            <div id="calc-result" class="mt-3"></div>
-                        </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card p-4 bg-success text-white rounded">
+                        <h2 class="mb-2">50+</h2>
+                        <p class="mb-0">Game Tersedia</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card p-4 bg-info text-white rounded">
+                        <h2 class="mb-2">24/7</h2>
+                        <p class="mb-0">Support Online</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card p-4 bg-warning text-white rounded">
+                        <h2 class="mb-2">4.9/5</h2>
+                        <p class="mb-0">Rating Pengguna</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="topup" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Top Up Game</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="topup-form">
-                        <form id="topup-form">
-                            <div class="mb-3">
-                                <label for="game-select" class="form-label">Pilih Game</label>
-                                <select id="game-select" class="form-select" required>
-                                    <option value="">Pilih Game</option>
-                                    <!-- Options will be populated dynamically -->
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="user-id" class="form-label">ID Player</label>
-                                <input type="text" id="user-id" class="form-control" required>
-                            </div>
-                            <div class="mb-3" id="server-group">
-                                <label for="server" class="form-label">Server</label>
-                                <input type="text" id="server" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nominal" class="form-label">Pilih Nominal</label>
-                                <select id="nominal" class="form-select" required>
-                                    <option value="">Pilih Nominal</option>
-                                    <!-- Options will be populated dynamically -->
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Top Up Sekarang</button>
-                        </form>
-                    </div>
-                </div>
+    <section class="cta-section py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Siap Top Up Game Favorit Anda?</h2>
+            <p class="lead mb-4">Bergabunglah dengan ribuan pemain yang telah mempercayai PideyTopUp</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="topup.html" class="btn btn-light btn-lg">
+                    <i class="fas fa-shopping-cart me-2"></i>Top Up Sekarang
+                </a>
+                <a href="cek-transaksi.html" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-search me-2"></i>Cek Transaksi
+                </a>
+                <a href="kalkulator.html" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-calculator me-2"></i>Kalkulator
+                </a>
             </div>
         </div>
     </section>
@@ -202,10 +190,10 @@
                 <div class="col-md-3">
                     <h5>Layanan</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#topup">Top Up Game</a></li>
-                        <li><a href="#cek-transaksi">Cek Transaksi</a></li>
-                        <li><a href="#leaderboard">Leaderboard</a></li>
-                        <li><a href="#kalkulator">Kalkulator</a></li>
+                        <li><a href="topup.html">Top Up Game</a></li>
+                        <li><a href="cek-transaksi.html">Cek Transaksi</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="kalkulator.html">Kalkulator</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">

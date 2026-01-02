@@ -457,3 +457,113 @@ body {
         margin: 0 8px;
     }
 }
+
+/* Feature Cards */
+.feature-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+}
+
+.feature-card i {
+    color: #007bff;
+}
+
+.feature-card h4 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #cccccc;
+    font-size: 0.9rem;
+}
+
+/* Stat Cards */
+.stat-card {
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: scale(1.05);
+}
+
+.stat-card h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.cta-section .btn {
+    margin: 5px;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cta-section .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Popular Section */
+.popular-section {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.popular-section h2 {
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-slider {
+        height: 50vh;
+        min-height: 300px;
+    }
+    
+    .slide {
+        height: 50vh;
+        min-height: 300px;
+    }
+    
+    .slide-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .slide-content p {
+        font-size: 0.9rem;
+    }
+    
+    .feature-card {
+        margin-bottom: 20px;
+    }
+    
+    .stat-card h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-section .btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
