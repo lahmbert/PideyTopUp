@@ -203,16 +203,29 @@ function selectGame(gameId) {
 
 // Initialize hero slider
 function initHeroSlider() {
-    $('.slider').slick({
-        dots: true,
-        infinite: true,
-        speed: 500,
-        fade: true,
-        cssEase: 'linear',
-        autoplay: true,
-        autoplaySpeed: 5000,
-        arrows: false
-    });
+    if ($('.slider').length) {
+        $('.slider').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            fade: true,
+            cssEase: 'linear',
+            autoplay: true,
+            autoplaySpeed: 5000,
+            arrows: false,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        fade: false,
+                        speed: 300
+                    }
+                }
+            ]
+        });
+    }
 }
 
 // Dark Mode Toggle
