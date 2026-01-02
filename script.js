@@ -1,5 +1,39 @@
 // script.js
 
+// Loading state management
+function showLoading(elementId, message = 'Loading...') {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.innerHTML = `
+            <div class="text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2 text-muted">${message}</p>
+            </div>
+        `;
+    }
+}
+
+function hideLoading(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.innerHTML = '';
+    }
+}
+
+function showError(elementId, message) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.innerHTML = `
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                ${message}
+            </div>
+        `;
+    }
+}
+
 // Utility functions
 function generateSN() {
     const randomNum = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
@@ -151,51 +185,64 @@ async function fetchGames() {
 
 // Load games into the page
 async function loadGames() {
-    const games = await fetchGames();
     const gamesContainer = document.getElementById('games-container');
     if (gamesContainer) {
-        const gameImages = {
-            'mobilelegends': 'https://logos-world.net/wp-content/uploads/2020/11/Mobile-Legends-Logo.png',
-            'freefire': 'https://logos-world.net/wp-content/uploads/2020/12/Free-Fire-Logo.png',
-            'pubgmobile': 'https://logos-world.net/wp-content/uploads/2020/12/PUBG-Mobile-Logo.png',
-            'genshinimpact': 'https://logos-world.net/wp-content/uploads/2021/02/Genshin-Impact-Logo.png',
-            'valorant': 'https://logos-world.net/wp-content/uploads/2021/02/Valorant-Logo.png',
-            'callofdutymobile': 'https://logos-world.net/wp-content/uploads/2020/11/Call-of-Duty-Mobile-Logo.png',
-            'honkaistarrail': 'https://logos-world.net/wp-content/uploads/2023/04/Honkai-Star-Rail-Logo.png',
-            'clashofclans': 'https://logos-world.net/wp-content/uploads/2020/11/Clash-of-Clans-Logo.png'
-        };
-        gamesContainer.innerHTML = games.map(game => `
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 game-item" data-game-name="${game.name.toLowerCase()}">
-                <div class="card game-card h-100" data-game-id="${game.id}">
-                    <img src="${gameImages[game.id] || 'https://via.placeholder.com/200x150?text=' + encodeURIComponent(game.name)}" class="card-img-top" alt="${game.name}" style="height: 150px; object-fit: contain; background-color: #fff; padding: 10px;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">${game.name}</h5>
-                        <button class="btn btn-primary mt-auto" onclick="selectGame('${game.id}')">Top Up</button>
+        showLoading('games-container', 'Memuat daftar game...');
+    }
+
+    try {
+        const games = await fetchGames();
+
+        if (gamesContainer) {
+            const gameImages = {
+                'mobilelegends': 'https://logos-world.net/wp-content/uploads/2020/11/Mobile-Legends-Logo.png',
+                'freefire': 'https://logos-world.net/wp-content/uploads/2020/12/Free-Fire-Logo.png',
+                'pubgmobile': 'https://logos-world.net/wp-content/uploads/2020/12/PUBG-Mobile-Logo.png',
+                'genshinimpact': 'https://logos-world.net/wp-content/uploads/2021/02/Genshin-Impact-Logo.png',
+                'valorant': 'https://logos-world.net/wp-content/uploads/2021/02/Valorant-Logo.png',
+                'callofdutymobile': 'https://logos-world.net/wp-content/uploads/2020/11/Call-of-Duty-Mobile-Logo.png',
+                'honkaistarrail': 'https://logos-world.net/wp-content/uploads/2023/04/Honkai-Star-Rail-Logo.png',
+                'clashofclans': 'https://logos-world.net/wp-content/uploads/2020/11/Clash-of-Clans-Logo.png'
+            };
+            gamesContainer.innerHTML = games.map(game => `
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 game-item" data-game-name="${game.name.toLowerCase()}">
+                    <div class="card game-card h-100" data-game-id="${game.id}">
+                        <img src="${gameImages[game.id] || 'https://via.placeholder.com/200x150?text=' + encodeURIComponent(game.name)}" class="card-img-top" alt="${game.name}" style="height: 150px; object-fit: contain; background-color: #fff; padding: 10px;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">${game.name}</h5>
+                            <button class="btn btn-primary mt-auto" onclick="selectGame('${game.id}')">Top Up</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `).join('');
+            `).join('');
+        }
+
+        // Update game select options
+        const gameSelect = document.getElementById('game-select');
+        if (gameSelect) {
+            gameSelect.innerHTML = '<option value="">Pilih Game</option>' +
+                games.map(game => `<option value="${game.id}">${game.name}</option>`).join('');
+        }
+
+        // Load popular games (first 4 games)
+        loadPopularGames(games.slice(0, 4));
+
+        // Update kalkulator game options
+        const calcGameSelect = document.getElementById('calc-game');
+        if (calcGameSelect) {
+            calcGameSelect.innerHTML = '<option value="">Pilih Game</option>' +
+                games.map(game => `<option value="${game.id}">${game.name}</option>`).join('');
+        }
+
+        // Store games data for later use
+        window.gamesData = games;
+
+    } catch (error) {
+        console.error('Failed to load games:', error);
+        if (gamesContainer) {
+            showError('games-container', 'Gagal memuat daftar game. Silakan refresh halaman atau coba lagi nanti.');
+        }
     }
-
-    // Update game select options
-    const gameSelect = document.getElementById('game-select');
-    if (gameSelect) {
-        gameSelect.innerHTML = '<option value="">Pilih Game</option>' +
-            games.map(game => `<option value="${game.id}">${game.name}</option>`).join('');
-    }
-
-    // Load popular games (first 4 games)
-    loadPopularGames(games.slice(0, 4));
-
-    // Update kalkulator game options
-    const calcGameSelect = document.getElementById('calc-game');
-    if (calcGameSelect) {
-        calcGameSelect.innerHTML = '<option value="">Pilih Game</option>' +
-            games.map(game => `<option value="${game.id}">${game.name}</option>`).join('');
-    }
-
-    // Store games data for later use
-    window.gamesData = games;
 }
 
 // Load popular games section
