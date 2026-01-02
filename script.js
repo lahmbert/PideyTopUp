@@ -121,65 +121,9 @@ async function fetchGames() {
 
     } catch (error) {
         console.error('Failed to fetch from Digiflazz API:', error);
-        console.log('Falling back to dummy data...');
-
-        // Enhanced fallback data with more games and realistic prices
-        return [
-            { id: 'mobilelegends', name: 'Mobile Legends', type: 'game', denominations: [
-                { id: 'ML100', name: '100 Diamonds', price: 15000, buyer_price: 15000, seller_price: 16000 },
-                { id: 'ML250', name: '250 Diamonds', price: 37500, buyer_price: 37500, seller_price: 38500 },
-                { id: 'ML500', name: '500 Diamonds', price: 75000, buyer_price: 75000, seller_price: 76000 },
-                { id: 'ML1000', name: '1000 Diamonds', price: 150000, buyer_price: 150000, seller_price: 151000 }
-            ]},
-            { id: 'freefire', name: 'Free Fire', type: 'game', denominations: [
-                { id: 'FF120', name: '120 Diamonds', price: 20000, buyer_price: 20000, seller_price: 21000 },
-                { id: 'FF310', name: '310 Diamonds', price: 50000, buyer_price: 50000, seller_price: 51000 },
-                { id: 'FF520', name: '520 Diamonds', price: 85000, buyer_price: 85000, seller_price: 86000 },
-                { id: 'FF1080', name: '1080 Diamonds', price: 170000, buyer_price: 170000, seller_price: 171000 }
-            ]},
-            { id: 'pubgmobile', name: 'PUBG Mobile', type: 'game', denominations: [
-                { id: 'PUBG60', name: '60 UC', price: 15000, buyer_price: 15000, seller_price: 16000 },
-                { id: 'PUBG325', name: '325 UC', price: 75000, buyer_price: 75000, seller_price: 76000 },
-                { id: 'PUBG660', name: '660 UC', price: 150000, buyer_price: 150000, seller_price: 151000 },
-                { id: 'PUBG1800', name: '1800 UC', price: 375000, buyer_price: 375000, seller_price: 376000 }
-            ]},
-            { id: 'genshinimpact', name: 'Genshin Impact', type: 'game', denominations: [
-                { id: 'GI60', name: '60 Genesis Crystals', price: 15000, buyer_price: 15000, seller_price: 16000 },
-                { id: 'GI300', name: '300 Genesis Crystals', price: 75000, buyer_price: 75000, seller_price: 76000 },
-                { id: 'GI980', name: '980 Genesis Crystals', price: 225000, buyer_price: 225000, seller_price: 226000 },
-                { id: 'GI1980', name: '1980 Genesis Crystals', price: 450000, buyer_price: 450000, seller_price: 451000 }
-            ]},
-            { id: 'valorant', name: 'Valorant', type: 'game', denominations: [
-                { id: 'VAL125', name: '125 Points', price: 15000, buyer_price: 15000, seller_price: 16000 },
-                { id: 'VAL420', name: '420 Points', price: 50000, buyer_price: 50000, seller_price: 51000 },
-                { id: 'VAL700', name: '700 Points', price: 85000, buyer_price: 85000, seller_price: 86000 },
-                { id: 'VAL1375', name: '1375 Points', price: 170000, buyer_price: 170000, seller_price: 171000 }
-            ]},
-            { id: 'codmobile', name: 'Call of Duty Mobile', type: 'game', denominations: [
-                { id: 'COD80', name: '80 CP', price: 15000, buyer_price: 15000, seller_price: 16000 },
-                { id: 'COD400', name: '400 CP', price: 75000, buyer_price: 75000, seller_price: 76000 },
-                { id: 'COD1000', name: '1000 CP', price: 170000, buyer_price: 170000, seller_price: 171000 },
-                { id: 'COD2400', name: '2400 CP', price: 375000, buyer_price: 375000, seller_price: 376000 }
-            ]},
-            { id: 'arenaofvalor', name: 'Arena of Valor', type: 'game', denominations: [
-                { id: 'AOV100', name: '100 Vouchers', price: 15000, buyer_price: 15000, seller_price: 16000 },
-                { id: 'AOV520', name: '520 Vouchers', price: 75000, buyer_price: 75000, seller_price: 76000 },
-                { id: 'AOV1060', name: '1060 Vouchers', price: 150000, buyer_price: 150000, seller_price: 151000 },
-                { id: 'AOV2180', name: '2180 Vouchers', price: 300000, buyer_price: 300000, seller_price: 301000 }
-            ]},
-            { id: 'honkaiimpact3', name: 'Honkai Impact 3', type: 'game', denominations: [
-                { id: 'HI330', name: '330 Crystals', price: 15000, buyer_price: 15000, seller_price: 16000 },
-                { id: 'HI980', name: '980 Crystals', price: 45000, buyer_price: 45000, seller_price: 46000 },
-                { id: 'HI1980', name: '1980 Crystals', price: 90000, buyer_price: 90000, seller_price: 91000 },
-                { id: 'HI3280', name: '3280 Crystals', price: 150000, buyer_price: 150000, seller_price: 151000 }
-            ]},
-            { id: 'lordsmobile', name: 'Lords Mobile', type: 'game', denominations: [
-                { id: 'LM120', name: '120 Gems', price: 15000, buyer_price: 15000, seller_price: 16000 },
-                { id: 'LM610', name: '610 Gems', price: 75000, buyer_price: 75000, seller_price: 76000 },
-                { id: 'LM1280', name: '1280 Gems', price: 150000, buyer_price: 150000, seller_price: 151000 },
-                { id: 'LM2680', name: '2680 Gems', price: 300000, buyer_price: 300000, seller_price: 301000 }
-            ]}
-        ];
+        console.log('API failed - no fallback data will be shown');
+        // Return empty array instead of fallback data
+        return [];
     }
 }
 
@@ -237,6 +181,21 @@ async function loadGames() {
         // Store games data for later use
         window.gamesData = games;
 
+        // Handle case where no games are available
+        if (games.length === 0) {
+            if (gamesContainer) {
+                gamesContainer.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <div class="alert alert-info" role="alert">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Tidak ada game tersedia saat ini. Silakan coba lagi nanti.
+                        </div>
+                    </div>
+                `;
+            }
+            return;
+        }
+
     } catch (error) {
         console.error('Failed to load games:', error);
         if (gamesContainer) {
@@ -249,6 +208,11 @@ async function loadGames() {
 function loadPopularGames(popularGames) {
     const popularContainer = document.getElementById('popular-games');
     if (popularContainer) {
+        if (!popularGames || popularGames.length === 0) {
+            popularContainer.innerHTML = '';
+            return;
+        }
+
         const gameImages = {
             'mobilelegends': 'https://logos-world.net/wp-content/uploads/2020/11/Mobile-Legends-Logo.png',
             'freefire': 'https://logos-world.net/wp-content/uploads/2020/12/Free-Fire-Logo.png',
